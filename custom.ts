@@ -85,7 +85,7 @@ namespace pathfinding {
 
     function stepEnemyToPlayerWithSpeed(enemy: Sprite, player2: Sprite, speed: number) {
         generatePath(player2, enemy)
-        currentEnemyDistance = pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column]
+        let currentEnemyDistance = pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column]
         if (enemy.tilemapLocation().column > 0 && pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column - 1] < currentEnemyDistance) {
             enemy.vx = -1 * speed
         } else if (enemy.tilemapLocation().column < 23 && pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column + 1] < currentEnemyDistance) {

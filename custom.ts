@@ -102,11 +102,11 @@ namespace pathfinding {
         }
     }
 
-    //% block
-    export function start_enemies_following_player_with_speed(player2: Sprite, speed: number) {
+    //% block="set enemies follow $player with speed $speed"
+    export function start_enemies_following_player_with_speed(player: Sprite, speed: number) {
         game.onUpdate(function () {
             for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
-                stepEnemyToPlayerWithSpeed(value, player2, speed)
+                stepEnemyToPlayerWithSpeed(value, player, speed)
             }
         })
     }

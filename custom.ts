@@ -119,6 +119,7 @@ namespace pathfinding {
     //% enemy.shadow=variables_get
     //% player.defl=myPlayer
     //% player.shadow=variables_get
+    //% speed.shadow=number
     //% speed.defl=100
     export function set_enemy_pathfind_to_player(enemy: Sprite, player: Sprite, speed: number) {
         game.onUpdate(function () { stepEnemyToPlayerWithSpeed(enemy, player, speed) })

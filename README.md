@@ -1,4 +1,5 @@
- 
+This extension adds 2 blocks to use instead of the old follow block in Makecode Arcade. Instead of getting stuck on walls, sprites using the pathfinding blocks will walk around them in the shortest path to the target sprite!
+YOU MUST USE A TILEMAP FOR THIS EXTENSION TO FUNCTION.
 
 
 > Open this page at [https://king5232.github.io/pxt-pathfinding/](https://king5232.github.io/pxt-pathfinding/)

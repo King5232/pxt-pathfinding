@@ -102,7 +102,7 @@ namespace pathfinding {
         }
     }
 
-    //% block="set enemies follow $player2 with speed $speed"
+    //% block="set all enemies pathfind to $player2 with speed $speed"
     //% player2.defl=myPlayer
     //% player2.shadow=variables_get
     //% speed.defl=100

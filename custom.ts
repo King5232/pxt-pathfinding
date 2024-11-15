@@ -103,8 +103,9 @@ namespace pathfinding {
     }
 
     //% block="set enemies follow $player2 with speed $speed"
-    //% player2.defl=someName
+    //% player2.defl=myPlayer
     //% player2.shadow=variables_get
+    //% speed.defl=100
     export function start_enemies_following_player_with_speed(player2: Sprite, speed: number) {
         game.onUpdate(function () {
             for (let value of sprites.allOfKind(SpriteKind.Enemy)) {

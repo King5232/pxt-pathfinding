@@ -102,7 +102,7 @@ namespace pathfinding {
         }
     }
 
-    //% block="set all enemies pathfind to $player2 with speed $speed"
+    //% block="set all enemies pathfind to $player2 || with speed $speed"
     //% player2.defl=myPlayer
     //% player2.shadow=variables_get
     //% speed.defl=100
@@ -112,5 +112,15 @@ namespace pathfinding {
                 stepEnemyToPlayerWithSpeed(value, player2, speed)
             }
         })
+    }
+
+    //% block="set $enemy pathfind to $player || with speed $speed"
+    //% enemy.defl=myEnemy
+    //% enemy.shadow=variables_get
+    //% player.defl=myPlayer
+    //% player.shadow=variables_get
+    //% speed.defl=100
+    export function set_enemy_pathfind_to_player(enemy: Sprite, player: Sprite, speed: number) {
+        game.onUpdate(function () { stepEnemyToPlayerWithSpeed(enemy, player, speed) })
     }
 }

@@ -20,9 +20,9 @@ namespace pathfinding {
 
     function resetPath() {
         pathTileLocations = []
-        for (let i = 0; i <= 15; i++) {
+        for (let i = 0; i < tiles.tilemapRows(); i++) {
             pathTileLocations.push([])
-            for (let j = 0; j <= 23; j++) {
+            for (let j = 0; j < tiles.tilemapColumns(); j++) {
                 pathTileLocations[i].push(999)
             }
         }
@@ -38,7 +38,7 @@ namespace pathfinding {
                 }
             }
         }
-        if (col < 23) {
+        if (col < tiles.tilemapColumns() - 1) {
             if (tiles.tileAtLocationIsWall(tiles.getTileLocation(col + 1, row))) {
                 pathTileLocations[row][col + 1] = 1000
             } else {
@@ -56,7 +56,7 @@ namespace pathfinding {
                 }
             }
         }
-        if (row < 15) {
+        if (row < tiles.tilemapRows() - 1) {
             if (tiles.tileAtLocationIsWall(tiles.getTileLocation(col, row + 1))) {
                 pathTileLocations[row + 1][col] = 1000
             } else {
@@ -72,8 +72,8 @@ namespace pathfinding {
         let currentPathTileDistance = 0
         pathTileLocations[target.tilemapLocation().row][target.tilemapLocation().column] = 0
         while (pathTileLocations[pather.tilemapLocation().row][pather.tilemapLocation().column] == 999) {
-            for (let k = 0; k <= 15; k++) {
-                for (let l = 0; l <= 23; l++) {
+            for (let k = 0; k < tiles.tilemapRows(); k++) {
+                for (let l = 0; l < tiles.tilemapColumns(); l++) {
                     if (pathTileLocations[k][l] == currentPathTileDistance) {
                         checkAroundTile(k, l, currentPathTileDistance)
                     }
@@ -88,14 +88,14 @@ namespace pathfinding {
         let currentEnemyDistance = pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column]
         if (enemy.tilemapLocation().column > 0 && pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column - 1] < currentEnemyDistance) {
             enemy.vx = -1 * speed
-        } else if (enemy.tilemapLocation().column < 23 && pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column + 1] < currentEnemyDistance) {
+        } else if (enemy.tilemapLocation().column < tiles.tilemapColumns() - 1 && pathTileLocations[enemy.tilemapLocation().row][enemy.tilemapLocation().column + 1] < currentEnemyDistance) {
             enemy.vx = speed
         } else {
             enemy.vx = Math.constrain(enemy.vx, -1, 1) * speed / 3
         }
         if (enemy.tilemapLocation().row > 0 && pathTileLocations[enemy.tilemapLocation().row - 1][enemy.tilemapLocation().column] < currentEnemyDistance) {
             enemy.vy = -1 * speed
-        } else if (enemy.tilemapLocation().row < 15 && pathTileLocations[enemy.tilemapLocation().row + 1][enemy.tilemapLocation().column] < currentEnemyDistance) {
+        } else if (enemy.tilemapLocation().row < tiles.tilemapRows() - 1 && pathTileLocations[enemy.tilemapLocation().row + 1][enemy.tilemapLocation().column] < currentEnemyDistance) {
             enemy.vy = speed
         } else {
             enemy.vy = Math.constrain(enemy.vy, -1, 1) * speed / 3
